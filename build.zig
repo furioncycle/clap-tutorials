@@ -14,7 +14,7 @@ pub fn build(b: *std.build.Builder) void {
     lib.install();
 
     const libInit = b.step("init", "Install clap to clap directory");
-    const install_clap = b.addSystemCommand(&[_][]const u8{ "cp", b.getInstallPath(.{ .lib = {} }, "libmoss-clap.so"), "/home/ttecho/.clap/moss-clap.clap" });
+    const install_clap = b.addSystemCommand(&[_][]const u8{ "cp", b.getInstallPath(.{ .lib = {} }, "libmoss-clap.so"), "./zig-out/lib/moss-clap.clap" });
     libInit.dependOn(&install_clap.step);
     libInit.dependOn(&lib.step);
 }
